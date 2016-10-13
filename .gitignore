@@ -1,0 +1,6 @@
+__pycache__/*
+localsettings.py
+user_info.txt
+*.pyc
+*.sync/*
+Python/.sync/
