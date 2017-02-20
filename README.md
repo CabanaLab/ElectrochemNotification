@@ -1,4 +1,5 @@
 # EC-Lab and BT-Lab Email Notification System
+[![GitHub tag](https://img.shields.io/github/tag/CabanaLab/ElectrochemNotification.svg?style=flat-square)](https://github.com/CabanaLab/ElectrochemNotification/releases)
 
 This python script is designed to run headless on a Windows machine running EC-Lab or BT-Lab software from Bio-logic. It watches for `.mpl` (log) files to be deleted by the programme and uses information in the file name to send an email to the owner of the experiment that their experiment is complete.
 
@@ -80,4 +81,3 @@ You can check whether your version of EC-Lab or BT-Lab is deleting .mpl files by
 
 
 ![Deleting .mpl files](./example/deleting_mpl_files.png)
-

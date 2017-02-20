@@ -4,3 +4,9 @@ user_info.txt
 *.pyc
 *.sync/*
 Python/.sync/
+release-notes/
+EmailWhenDone/.#*
+EmailWhenDone/#*
+*~
+EmailWhenDone/user_info.py
+EmailWhenDone/user_info_test.py
