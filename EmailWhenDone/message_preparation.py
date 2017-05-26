@@ -1,6 +1,6 @@
 # A script that prepares information lists to be emailed
 # This script was written by Mike Plews (2015). Email me with any questions!
-import send_notification, os, localsettings as ls, user_info as ui, user_info_test as uit
+import send_notification, os, localsettings as ls, user_info as ui, tests.user_info_test as uit
 
 def find_user(filename, user_list=ui):
 	name_list, email_list = [], []
