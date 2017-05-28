@@ -60,7 +60,11 @@ def is_valid(filename, settingsfile=ls):
         if string in filename:
             return False
     return True
+<<<<<<< HEAD
     
+=======
+        
+>>>>>>> master
 if __name__ == '__main__':
     args = sys.argv[1:]
     #args = r'D://'

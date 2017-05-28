@@ -44,7 +44,6 @@ if __name__ == "__main__":
     for user in users:
         print ('{0}\t{1:16}\t{2}'.format(user[0], user[1], user[2:]))
 ```
-
 In this case, `Alvin` is contained in the string `./Data/Alvin/SampleA1/Test3.mpl`, so an email notification would be sent to `alvin@chip.edu`.
 
 ## Installation
@@ -52,16 +51,14 @@ In this case, `Alvin` is contained in the string `./Data/Alvin/SampleA1/Test3.mp
 Clone this git repo to a location of your choice, install the requirements, and create the `user_info.py` (see above) file.
 ```bash
 git clone git@github.com:CabanaLab/ElectrochemNotification.git
+cd ./ElectrochemNotification
 pip install -r requirements.txt
-touch user_info.txt
-touch localsettings.py
+touch ./EmailWhenDone/user_info.py
+touch ./EmailWhenDone/localsettings.py
 ```
-
-A `localsettings.py` file also needs to be made containing the following information.
 
 **localsettings.py**
 *This file must be created before running*
-
 
 ```python
 #localsettings
@@ -69,9 +66,6 @@ A `localsettings.py` file also needs to be made containing the following informa
 ## Moderator Information
 moderator = ''							#Your moderators name
 moderator_email = ''					#Moderators email address (for error reporting)
-
-## User Information File
-user_info = "user_info.txt"				#Your user info file
 
 ## Email Client Information
 server_email = ''						#the email address you wish to send notifications from (works with gmail)
@@ -97,8 +91,14 @@ pythonw DirectoryWatcher.py /directory/to/Data
 
 This file can also be run on Linux as a systemd service by creating a service file.
 
+## Running tests
+```bash
+cd ./EmailWhenDone
+python3 -m unittest tests/tests.py
+```
+
 ## Does my installation of BT-Lab/EC-Lab delete .mpl files when the experiment is complete?
-You can check whether your version of EC-Lab or BT-Lab is deleting .mpl files by going to Tools > Options > General tab and checking `LOG files (*.mpl) automiatic erasing on stop`
+You can check whether your version of EC-Lab or BT-Lab is deleting .mpl files by going to Tools > Options > General tab and checking `LOG files (*.mpl) automatic erasing on stop`
 
 
 ![Deleting .mpl files](./example/deleting_mpl_files.png)
