@@ -6,6 +6,8 @@ from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 import os, sys, atexit
 
+sys.path.append('tests')
+
 import message_preparation as mp, localsettings as ls
 
 import logging
@@ -58,7 +60,11 @@ def is_valid(filename, settingsfile=ls):
         if string in filename:
             return False
     return True
+<<<<<<< HEAD
+    
+=======
         
+>>>>>>> master
 if __name__ == '__main__':
     args = sys.argv[1:]
     #args = r'D://'

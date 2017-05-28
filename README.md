@@ -28,21 +28,27 @@ This system is designed to work with a specific data architecture. For example:
 
 Each user (Alvin, Simon and Theodore) have their own separate data folder with their data inside. Once Alvins Test3 finishes, bio-logic software deletes the .mpl file (see below for more info). Once the file is deleted, DirectoryWatcher.py takes the filename as a string, in this case `./Data/Alvin/SampleA1/Test3.mpl`.
 
-<!-- It then tries to match parts of the string (case sensitive) to an entry in the `user_info.txt` (This file should be created and edited by the user upon installation. The format is `id_string	email_address` and is tab delimited.) -->
+It then tries to match an id in `user_info.py` to the string of the filename. Here is an example `user_info.py` file:
 
-<!-- **user_info.txt** -->
-
-<!-- ``` -->
-<!-- Alvin	alvin@chip.edu -->
-<!-- Simon	simon@chip.edu -->
-<!-- Theodore	theodore@chip.edu -->
-<!-- ``` -->
-
-<!-- In this case, `Alvin` is contained in the string `./Data/Alvin/SampleA1/Test3.mpl`, so an email notification would be sent to `alvin@chip.edu`. -->
+**user_info.py**
+*This file must be created before running*
+```python
+# Users go here as tuples. The ordering is 'name', 'email', 'id1', 'id2' .... There is no limit to the number of ids
+users = (
+    ('Alvin', 'alvin@chip.edu', 'Alvin', 'alvin', 'ALVIN'),
+    ('Simon', 'simon@chip.edu', 'Simon', 'simon', 'SIMON'),
+    ('Theodore', 'theodore@chip.edu', 'Theodore', 'theodore', 'THEODORE')
+)
+# Pretty print the users by running python `users_info.py`
+if __name__ == "__main__":
+    for user in users:
+        print ('{0}\t{1:16}\t{2}'.format(user[0], user[1], user[2:]))
+```
+In this case, `Alvin` is contained in the string `./Data/Alvin/SampleA1/Test3.mpl`, so an email notification would be sent to `alvin@chip.edu`.
 
 ## Installation
 
-Clone this git repo to a location of your choice, install the requirements, and create the `user_info.txt` file.
+Clone this git repo to a location of your choice, install the requirements, and create the `user_info.py` (see above) file.
 ```bash
 git clone git@github.com:CabanaLab/ElectrochemNotification.git
 cd ./ElectrochemNotification
@@ -51,14 +57,9 @@ touch ./EmailWhenDone/user_info.py
 touch ./EmailWhenDone/localsettings.py
 ```
 
-**user_info.py**
-*This file must be created on your local machine prior to startup*
-```python
-
-```
-
 **localsettings.py**
-*This file must be created on your local machine prior to startup*
+*This file must be created before running*
+
 ```python
 #localsettings
 
@@ -71,8 +72,15 @@ server_email = ''						#the email address you wish to send notifications from (w
 username = ''							#email username
 password = ''							#email password
 
-ignore_list = []                        #list of strings contained in filenames you wish to ignore.
-``` 
+## Ignore List - Ignores a filename if any of theses strings are contained in it.
+ignore_list = [
+    'strings',
+    'that',
+    'should',
+    'be',
+    'ignored'
+]
+```
 
 ## Running the client headless
 
@@ -81,12 +89,13 @@ On a windows machine, the script can be run headless from the command line using
 pythonw DirectoryWatcher.py /directory/to/Data
 ```
 
+This file can also be run on Linux as a systemd service by creating a service file.
+
 ## Running tests
 ```bash
 cd ./EmailWhenDone
 python3 -m unittest tests/tests.py
 ```
-Running tests from another directory results in failure
 
 ## Does my installation of BT-Lab/EC-Lab delete .mpl files when the experiment is complete?
 You can check whether your version of EC-Lab or BT-Lab is deleting .mpl files by going to Tools > Options > General tab and checking `LOG files (*.mpl) automatic erasing on stop`

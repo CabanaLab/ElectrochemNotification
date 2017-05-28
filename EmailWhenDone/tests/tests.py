@@ -1,9 +1,9 @@
 """Unit tests for EmailWhenDone"""
 
 import unittest, re, datetime, sys
-sys.path.append("..")
-sys.path.append(".")
-import DirectoryWatcher, message_preparation as mp, send_notification as sn, tests.user_info_test as uit, globalsettings as gs, tests.testsettings as ts
+sys.path.append("tests")
+
+import DirectoryWatcher, message_preparation as mp, send_notification as sn, user_info_test as uit, globalsettings as gs, testsettings as ts
 
 class test_message_preparation(unittest.TestCase):
     def test_get_user_data(self):
