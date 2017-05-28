@@ -1,9 +1,9 @@
 """Unit tests for EmailWhenDone"""
 
-import unittest, re, datetime, sys, testsettings as ts
+import unittest, re, datetime, sys
+sys.path.append("tests")
 
-sys.path.append("..")
-import DirectoryWatcher, message_preparation as mp, send_notification as sn, user_info_test as uit, globalsettings as gs
+import DirectoryWatcher, message_preparation as mp, send_notification as sn, user_info_test as uit, globalsettings as gs, testsettings as ts
 
 class test_message_preparation(unittest.TestCase):
     def test_get_user_data(self):
@@ -26,7 +26,7 @@ class test_DirectoryWatcher(unittest.TestCase):
             ("C:/DATA/list/data",(False)),
         )
         for exp_in, exp_out in test_data:
-            result = DirectoryWatcher.MyHandler.is_valid(exp_in, settingsfile=ts)
+            result = DirectoryWatcher.is_valid(exp_in, settingsfile=ts)
             self.assertEqual(result, exp_out)
             
 # class test_send_notification(unittest.TestCase):

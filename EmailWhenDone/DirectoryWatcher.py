@@ -6,6 +6,8 @@ from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 import os, sys, atexit
 
+sys.path.append('tests')
+
 import message_preparation as mp, localsettings as ls
 
 import logging
@@ -53,12 +55,12 @@ class MyHandler(PatternMatchingEventHandler):
     def on_modified(self, event):
         print (event.src_path + ' ' + event.event_type)
 
-    def is_valid(filename, settingsfile=ls):
-        for string in settingsfile.ignore_list:
-            if string in filename:
-                return False
-        return True
-        
+def is_valid(filename, settingsfile=ls):
+    for string in settingsfile.ignore_list:
+        if string in filename:
+            return False
+    return True
+    
 if __name__ == '__main__':
     args = sys.argv[1:]
     #args = r'D://'
