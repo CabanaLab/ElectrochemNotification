@@ -13,9 +13,9 @@ import message_preparation as mp, localsettings as ls
 import logging
 
 # Setup logging
-logging.basicConfig(filename='/var/log/EmailWhenDone.log', level=logging.DEBUG)
+logging.basicConfig(filename='/var/log/EmailWhenDone.log', level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 log = logging.getLogger('DirectoryWatcher')
-# log = logging.setFormatter(logging.Formatter("%(asctime)s;%(levelname)s;%(message)s","%Y-%m-%d %H:%M:%S"))
+logging.getLogger("watchdog").setLevel(logging.WARNING)
 
 class MyHandler(PatternMatchingEventHandler):
     patterns = ["*.mpl"]

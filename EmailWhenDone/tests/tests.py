@@ -2,6 +2,7 @@
 
 import unittest, re, datetime, sys
 sys.path.append("tests")
+sys.path.append("..")
 
 import DirectoryWatcher, message_preparation as mp, send_notification as sn, user_info_test as uit, globalsettings as gs, testsettings as ts
 

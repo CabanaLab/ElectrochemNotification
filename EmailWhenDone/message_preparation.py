@@ -3,7 +3,7 @@
 import sys
 sys.path.append('./tests')
 
-import send_notification, os, localsettings as ls, user_info as ui, user_info_test as uit
+import send_notification, os, localsettings as ls, user_info as ui
 
 def find_user(filename, user_list=ui):
     name_list, email_list = [], []
